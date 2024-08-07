@@ -28,21 +28,21 @@ class MessageSV {
         <p class="cookieDescription">${item.content}</p>
         ${item.confirm 
           ? '<div class="box-btn"><button class="accept-btn" data-accept>Прийняти</button><button class="decline-btn" data-decline>Скасувати</button></div>' 
-          : '<div class="messageBox"><input required="" placeholder="Введіть ваш текст..." type="text" id="messageInput"/><button id="sendButton"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663"><path fill="none" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-width="33.67" stroke="#6c6c6c" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path></svg></button></div>'}
+          : `<div class="messageBox"><input required="" placeholder="${item.placeholder}" type="text" id="messageInput"/><button id="sendButton"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663"><path fill="none" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-width="33.67" stroke="#6c6c6c" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path></svg></button></div>`}
       `;
     } else if (item.loader) {
-      msg.className = 'sms' + ' loader' + ' sms-' + this.position;
+      msg.className = "sms" + " loader" + " sms-" + this.position;
       msg.innerHTML = `
         <svg width="30px" height="30px" enable-background="new 0 0 100 100" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m31.6 3.5c-25.7 10.1-38.2 39.2-28.1 64.9s39.2 38.3 64.9 28.1l-3.1-7.9c-21.3 8.4-45.4-2-53.8-23.3s2-45.4 23.3-53.8l-3.2-8z" fill="#fff"><animateTransform attributeName="transform" attributeType="XML" dur="2s" from="0 50 50" repeatCount="indefinite" to="360 50 50" type="rotate"/></path><path d="m42.3 39.6c5.7-4.3 13.9-3.1 18.1 2.7 4.3 5.7 3.1 13.9-2.7 18.1l4.1 5.5c8.8-6.5 10.6-19 4.1-27.7-6.5-8.8-19-10.6-27.7-4.1l4.1 5.5z" fill="#fff"><animateTransform attributeName="transform" attributeType="XML" dur="1s" from="0 50 50" repeatCount="indefinite" to="-360 50 50" type="rotate"/></path><path d="m82 35.7c-7.9-17.7-28.6-25.6-46.3-17.7s-25.6 28.6-17.7 46.3l7.6-3.4c-6-13.5 0-29.3 13.5-35.3s29.3 0 35.3 13.5l7.6-3.4z" fill="#fff"><animateTransform attributeName="transform" attributeType="XML" dur="2s" from="0 50 50" repeatCount="indefinite" to="360 50 50" type="rotate"/></path></svg>
         ${item.content ? '<div class="sms-content">' + item.content + '</div>' : ''}
       `;
     } else {
-      msg.className = 'sms' + (item.style ? ' sms-' + item.style : '') + ' sms-' + this.position;
+      msg.className = "sms" + (item.style ? " sms-" + item.style : "") + " sms-" + this.position;
       msg.innerHTML = `
         ${item.icon == null || item.icon === true ? `<div class="icon-SV"><div class="icon-${item.style}"></div></div>` : ''}
         <div class="sms-wrapper">
-          ${item.title ? '<h3 class="sms-header">' + item.title + '</h3>' : ''}
-          ${item.content ? '<div class="sms-content">' + item.content + '</div>' : ''}
+          ${item.title ? '<h3 class="sms-header">' + item.title + "</h3>" : ""}
+          ${item.content ? '<div class="sms-content">' + item.content + "</div>" : ""}
         </div>
         ${item.closeButton == null || item.closeButton === true ? '<button class="sms-close">&times;</button>' : ''}
       `;
@@ -306,6 +306,38 @@ ShowMessage.message = function() {
            loader: true
     });
   }
+  message.ShowPrompt = function(title, text, placeholder, success, error) {
+    const msg = new MessageSV({
+         width: "",
+        effect: "ease",
+      duration: ".5s", 
+      position: "top-center"
+    });
+    msg.CreateMessage({
+            title: title,
+          content: text,
+      closeButton: false,
+      placeholder: placeholder,
+             icon: false,
+            input: true
+    });
+  }
+  message.ShowConfirm = function(title, text, accept, decline) {
+    const msg = new MessageSV({
+         width: 250,
+        effect: "ease",
+      duration: ".5s", 
+      position: "top-center"
+    });
+    msg.CreateMessage({
+            title: title,
+          content: text,
+      closeButton: false,
+             icon: false,
+          confirm: true
+    });
+  }
   return message;
 }
 const SV = ShowMessage.message();
+SV.ShowConfirm('bggb', 'ffgcxd', 'gfdggdd');
