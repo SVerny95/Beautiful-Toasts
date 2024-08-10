@@ -340,4 +340,3 @@ ShowMessage.message = function() {
   return message;
 }
 const SV = ShowMessage.message();
-SV.ShowConfirm('bggb', 'ffgcxd', 'gfdggdd');
