@@ -28,7 +28,7 @@ class MessageSV {
         <p class="cookieDescription">${item.content}</p>
         ${item.confirm 
           ? '<div class="box-btn"><button class="accept-btn" data-accept>Прийняти</button><button class="decline-btn" data-decline>Скасувати</button></div>' 
-          : `<div class="messageBox"><input required="" placeholder="${item.placeholder}" type="text" id="messageInput"/><button id="sendButton"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663"><path fill="none" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-width="33.67" stroke="#6c6c6c" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path></svg></button></div>`}
+          : `<div class="messageBox"><input required="" placeholder="${item.placeholder}" type="text" id="messageInput"/><button id="sendButton"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663"><path fill="none" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-width="33.67" stroke="#6c6c6c" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path></svg></button></div><button class="decline-btn prompt-cancel" data-decline>Вихід</button>`}
       `;
     } else if (item.loader) {
       msg.className = "sms" + " loader" + " sms-" + this.position;
@@ -321,8 +321,22 @@ ShowMessage.message = function() {
              icon: false,
             input: true
     });
+    document.getElementById("sendButton").onclick = event => {
+      event.preventDefault();
+      if (success) success(document.getElementById("messageInput").value);
+      setTimeout(() => {
+        document.querySelector(".sms.card").remove();
+      }, 300);
+    }
+    document.querySelector("[data-decline]").onclick = event => {
+      event.preventDefault();
+      if (error) error();
+      setTimeout(() => {
+        document.querySelector(".sms.card").remove();
+      }, 300);
+    }
   }
-  message.ShowConfirm = function(title, text, accept, decline) {
+  message.ShowConfirm = function(title, text, accept, cancel) {
     const msg = new MessageSV({
          width: 250,
         effect: "ease",
@@ -336,6 +350,20 @@ ShowMessage.message = function() {
              icon: false,
           confirm: true
     });
+    document.querySelector("[data-accept]").onclick = event => {
+      event.preventDefault();
+      if (accept) accept();
+      setTimeout(() => {
+        document.querySelector(".sms.card").remove();
+      }, 300);
+    }
+    document.querySelector("[data-decline]").onclick = event => {
+      event.preventDefault();
+      if (cancel) cancel();
+      setTimeout(() => {
+        document.querySelector(".sms.card").remove();
+      }, 300);
+    }
   }
   return message;
 }
