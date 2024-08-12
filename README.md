@@ -10,7 +10,7 @@ To create a new instance of the toasts class, we can execute the following code:
 
 Create a new instance with predefined options:
 
-const message = new MessageSV({
+`const message = new MessageSV({
 
       offsetX: 20, // 20px
     
@@ -28,5 +28,5 @@ const message = new MessageSV({
     
       position: 'top-right' // top-left | top-center | top-right | bottom-left | bottom-center | bottom-right
     
-    });
+    });`
     
