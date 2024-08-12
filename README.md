@@ -38,9 +38,11 @@ The toast object accepts the following options:
 
 **linkTarget**	 => `_blank, _self, _parent, _top, framename`
 
-**dismissAfter**	 => `[transition-duration]`
+**delMsg**	=> `[transition-duration]`
 
 **closeButton**	 => `[boolean]`
+
+**icon** => `[boolean]`
 
 **onOpen**	=> `[function]`
 
