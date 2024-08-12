@@ -26,3 +26,24 @@ Create a new instance with predefined options:
 
       position: 'top-right' // top-left | top-center | top-right | bottom-left | bottom-center | bottom-right
     
+### The toast object accepts the following options:
+
+**title**             `[string]`
+
+**content**	          `[string]`
+
+**style**	            `success, error, verified, dark`
+
+**link**	            `[href]`
+
+**linkTarget**	      `_blank, _self, _parent, _top, framename`
+
+**dismissAfter**	    `[transition-duration]`
+
+**closeButton**	      `[boolean]`
+
+**onOpen**	          `[function]`
+
+**onClose**	          `[function]`
+
+**width**	            `[integer]`
