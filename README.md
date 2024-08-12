@@ -26,9 +26,9 @@ Create a new instance with predefined options:
 
       position: 'top-right' // top-left | top-center | top-right | bottom-left | bottom-center | bottom-right
     
-### The toast object accepts the following options:
+The toast object accepts the following options:
 
-**title**             `[string]`
+**title**            `[string]`
 
 **content**	          `[string]`
 
