@@ -28,22 +28,22 @@ Create a new instance with predefined options:
     
 The toast object accepts the following options:
 
-**title**            `[string]`
+**title** => `[string]`
 
-**content**	          `[string]`
+**content**	 => `[string]`
 
-**style**	            `success, error, verified, dark`
+**style** => `success, error, verified, dark`
 
-**link**	            `[href]`
+**link**	=> `[href]`
 
-**linkTarget**	      `_blank, _self, _parent, _top, framename`
+**linkTarget**	 => `_blank, _self, _parent, _top, framename`
 
-**dismissAfter**	    `[transition-duration]`
+**dismissAfter**	 => `[transition-duration]`
 
-**closeButton**	      `[boolean]`
+**closeButton**	 => `[boolean]`
 
-**onOpen**	          `[function]`
+**onOpen**	=> `[function]`
 
-**onClose**	          `[function]`
+**onClose**	 => `[function]`
 
-**width**	            `[integer]`
+**width**	=> `[integer]`
